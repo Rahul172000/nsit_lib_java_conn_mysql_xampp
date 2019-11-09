@@ -227,13 +227,14 @@ public class myProj {
 		Scanner input=new Scanner(System.in);
 		System.out.println("1.Print all issued books");
 		System.out.println("2.Print a particular issued book");
+		System.out.println("3.Print non returned books");
 		int op=input.nextInt();
 		String query;
 		if(op==1)
 		{
 			query="Select * from `issues`";
 		}
-		else
+		else if(op==2)
 		{
 			Scanner temp=new Scanner(System.in);
 			System.out.println("Enter the id of the issued book ");
@@ -241,6 +242,10 @@ public class myProj {
 			System.out.println("Enter the id of student who issued "+bid+" ");
 			String sid=temp.nextLine(); 
 			query="Select * from `issues` where sid='"+sid+"' AND bid='"+bid+"';";
+		}
+		else
+		{
+			query="Select * from `issues` where returned=false";
 		}
 		Connection con=null;
 		try
